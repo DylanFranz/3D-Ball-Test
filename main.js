@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import "./style.css";
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
 import gsap from 'gsap';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 //Sizes
 const sizes = {
@@ -12,8 +13,20 @@ const sizes = {
 //Scene
 const scene = new THREE.Scene();
 
+const loader = new GLTFLoader();
+
+loader.load( './earth.glb', function ( gltf ) {
+
+	scene.add( gltf.scene );
+
+}, undefined, function ( error ) {
+
+	console.error( error );
+
+} );
+
 //Sphere
-const geometry = new THREE.SphereGeometry(3, 64, 64)
+const geometry = new THREE.SphereGeometry(1.00, 64, 64)
 const material = new THREE.MeshStandardMaterial({
   color: '#00ff83',
   roughness: 0.5,
@@ -42,7 +55,7 @@ renderer.setPixelRatio(2)
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 controls.enablePan = false
-controls.enableZoom = false
+controls.enableZoom = true
 controls.autoRotate = true
 
 //Resize
