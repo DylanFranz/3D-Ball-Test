@@ -26,7 +26,7 @@ loader.load( './earth.glb', function ( gltf ) {
 } );
 
 //Sphere
-const geometry = new THREE.SphereGeometry(1.00, 64, 64)
+const geometry = new THREE.SphereGeometry(1.01, 64, 64)
 const material = new THREE.MeshStandardMaterial({
   color: '#00ff83',
   roughness: 0.5,
